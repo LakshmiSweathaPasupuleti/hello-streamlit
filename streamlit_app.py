@@ -21,13 +21,12 @@ if st.button("Submit", key= "ex1"):
 
 import numpy as np
 import pandas as pd
-st.header("🌈🍜 Ex:2: FOOD TRIVIA 🍰🌮")
+st.header("🌈🍜 Ex:2: MOVIE TRIVIA 🍰🌮")
 
 my_data = pd.DataFrame({ 
-    "Cuisine": ["Italian", "Indian", "Chinese", "Mexican", "Japanese"],
-    "Year": [1960, 1980, 1970, 1960, 1950],
-    "Dessert": ["Tiramisu", "Gulab Jamun", "Mooncake", "Churros", "Mochi"],
-    "Dessert_Answer": [True, False, False, False, False]
+    "Movies": ["Interstellar", "The Dark Knight", "Forest Gump", "KillBill", "A Beautiful Mind"],
+    "ProductionCostsInMillions": [170, 180, 60, 30, 60 ],
+    "HighestGrosser_Answer": [False, True, False, False, False]
 })
 st.write("Test your knowledge of world cuisines and delicious desserts!")
 
@@ -36,21 +35,22 @@ col1, col2 = st.columns(2)
 #Question1:
 
 with col1:
-    st.subheader("🩷🌎 Cuisine Challenge")
-    st.write("Choose a cuisine and guess around which year it became popular worldwide.")
-    cuisine = st.selectbox("Choose a cuisine:", my_data["Cuisine"],key= "Cuisine", index=None)
-
-    year = st.select_slider("Around which year?", options = np.arange(1900, 2021, 10), key = "year")
+    st.subheader("🌎 Movie Challenge")
+    st.write("Choose a movie and guess it's production budget")
+    Movie = st.selectbox("Choose a movie:", my_data["Movies"],key= "Movies", index=None)
+    budget = st.select_slider("💰 What was the production budget? (in $ millions)",
+    options=np.arange(20, 201, 5),
+    key="budget")
 with col2:
-    st.subheader("💜🤯 The Food Fact")
-    st.write("Which dessert was invented most recently?")
-    dessert = st.selectbox("Choose a dessert:", my_data["Dessert"], key="dessert", index=None)
+    st.subheader("🤯 The collections fact")
+    st.write("Which movie has collected more than a billion dollars worldwide?")
+    Movie_highestgrosser = st.selectbox("Choose a Movie:", my_data["Movies"], key="Movie_grosser", index=None)
 
 #Sumission:
 
 if st.button("Submit", key="ex2"):
-    correct_year = my_data.loc[my_data["Cuisine"]== cuisine, "Year"].iloc[0]
-    correct_dessert = my_data.loc[my_data["Dessert_Answer"]==True, "Dessert"].iloc[0]
+    correct_budget = my_data.loc[my_data["Movies"]== Movie, "ProductionCostsInMillions"].iloc[0]
+    correct_grosser = my_data.loc[my_data["HighestGrosser_Answer"]==True, "Movies"].iloc[0]
     #if year == correct_year:
         #st.success("Hurray! Your guess is pretty correct!")
     ##else:
@@ -60,7 +60,7 @@ if st.button("Submit", key="ex2"):
     #else:
     #    st.error("😅 Almost!")
 
-    if year == correct_year and dessert == correct_dessert:
+    if budget == correct_budget and Movie_highestgrosser == correct_grosser:
         st.success("🎉🎉 PERFECT! You got both right! 👏")
         st.balloons()
 
@@ -70,13 +70,13 @@ if st.button("Submit", key="ex2"):
         </div>
         """, unsafe_allow_html=True)
 
-    elif year == correct_year:
+    elif budget == correct_budget:
         st.success("Question 1 — Correct!👏👏👏")
         st.error("Question 2 —  Missed in a bit!😅")
 
-    elif dessert == correct_dessert:
+    elif Movie_highestgrosser == correct_grosser:
         st.error("🌎 Question 1 — Not quite!")
-        st.success("🤯 Question 2 — Correct!👏👏👏")
+        st.success("🤯 Question 2 — 🎉 Correct! The Dark Knight crossed $1 billion!")
 
     else:
         st.error("😅 Both answers are not quite right!")
