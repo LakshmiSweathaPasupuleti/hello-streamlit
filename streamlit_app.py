@@ -21,7 +21,7 @@ if st.button("Submit", key= "ex1"):
 
 import numpy as np
 import pandas as pd
-st.header("🎬🍿Ex:2: MOVIE TRIVIA 🎬🍿")
+st.header("🎬🍿Ex:2: MOVIE TRIVIA")
 
 my_data = pd.DataFrame({ 
     "Movies": ["Interstellar", "The Dark Knight", "Forest Gump", "KillBill", "A Beautiful Mind"],
@@ -35,7 +35,7 @@ col1, col2 = st.columns(2)
 #Question1:
 
 with col1:
-    st.subheader("🌟🏆 Movie Challenge")
+    st.subheader("🌟 Movie Challenge")
     st.write("Choose a movie and guess it's production budget")
     Movie = st.selectbox("Choose a movie:", my_data["Movies"],key= "Movies", index=None)
     budget = st.select_slider("💰 What was the production budget? (in $ millions)",
