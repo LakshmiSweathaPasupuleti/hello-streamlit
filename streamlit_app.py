@@ -10,7 +10,7 @@ st.write("These are most engaging movies ever made! I like all of them but can y
 
 movies = ["Interstellar", "The Dark Knight", "Forest Gump", "KillBill", "A Beautiful Mind"]
 
-guess = st.selectbox("Guess my favorite one:", movies)
+guess = st.selectbox("Guess my favorite one:", movies, index=None)
 
 if st.button("Submit"):
     if guess == "The Dark Knight":
