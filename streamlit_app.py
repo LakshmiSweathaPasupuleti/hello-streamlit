@@ -35,7 +35,7 @@ col1, col2 = st.columns(2)
 #Question1:
 
 with col1:
-    st.subheader("🌎 Movie Challenge")
+    st.subheader("🎬🍿🌟🏆 Movie Challenge")
     st.write("Choose a movie and guess it's production budget")
     Movie = st.selectbox("Choose a movie:", my_data["Movies"],key= "Movies", index=None)
     budget = st.select_slider("💰 What was the production budget? (in $ millions)",
@@ -76,7 +76,7 @@ if st.button("Submit", key="ex2"):
 
     elif Movie_highestgrosser == correct_grosser:
         st.error("🌎 Question 1 — Not quite!")
-        st.success("🤯 Question 2 — 🎉 Correct! The Dark Knight crossed $1 billion!")
+        st.success("🤯 Question 2 — 🌟🎬🔥 Correct! The Dark Knight crossed $1 billion!")
 
     else:
         st.error("😅 Both answers are not quite right!")
