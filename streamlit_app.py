@@ -51,11 +51,32 @@ with col2:
 if st.button("Submit", key="ex2"):
     correct_year = my_data.loc[my_data["Cuisine"]== cuisine, "Year"].iloc[0]
     correct_dessert = my_data.loc[my_data["Dessert_Answer"]==True, "Dessert"].iloc[0]
-    if year == correct_year:
-        st.success("Hurray! Your guess is pretty correct!")
+    #if year == correct_year:
+        #st.success("Hurray! Your guess is pretty correct!")
+    ##else:
+      #  st.error("😅 Missed in a bit!")
+    #if dessert == correct_dessert:
+     #   st.success("Yay right, Tiramisu is surprisingly young..! 🍰🍰🍰")
+    #else:
+    #    st.error("😅 Almost!")
+
+    if year == correct_year and dessert == correct_dessert:
+        st.success("🎉🎉 PERFECT! You got both right! 👏")
+        st.balloons()
+
+        st.markdown("""
+        <div style="font-size:50px; text-align:center;">
+            👏 👏 👏 👏 👏
+        </div>
+        """, unsafe_allow_html=True)
+
+    elif year == correct_year:
+        st.success("Question 1 — Correct!👏👏👏")
+        st.error("Question 2 —  Missed in a bit!😅")
+
+    elif dessert == correct_dessert:
+        st.error("🌎 Question 1 — Not quite!")
+        st.success("🤯 Question 2 — Correct!👏👏👏")
+
     else:
-        st.error("😅 Missed in a bit!")
-    if dessert == correct_dessert:
-        st.success("Yay right, Tiramisu is surprisingly young..! 🍰🍰🍰")
-    else:
-        st.error("😅 Almost!")
+        st.error("😅 Both answers are not quite right!")
